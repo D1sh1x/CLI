@@ -1,0 +1,5 @@
+2025-09-01T10:00:00Z [INFO] start worker id=1
+2025-09-01T10:00:01Z [WARN] slow request id=42
+2025-09-01T10:00:02Z [ERROR] timeout while calling service A
+user=john action=login status=ok
+payment_id=123 done

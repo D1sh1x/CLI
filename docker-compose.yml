@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  nodeA:
+    build: .
+    image: mygrep:latest
+    container_name: mygrep-nodeA
+    command: ["serve", "-addr", ":8080", "-node", "A"]
+    ports:
+      - "8080:8080"
+
+  nodeB:
+    image: mygrep:latest
+    container_name: mygrep-nodeB
+    command: ["serve", "-addr", ":8081", "-node", "B"]
+    ports:
+      - "8081:8081"
+
+  coordinator:
+    image: mygrep:latest
+    container_name: mygrep-coordinator
+    depends_on:
+      - nodeA
+      - nodeB
+    volumes:
+      - ./examples:/data:ro
+    command: ["run", "-pattern", "error", "-file", "/data/shardA.log",
+              "-peers", "http://nodeA:8080,http://nodeB:8081",
+              "-show-node"]

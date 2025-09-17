@@ -1,0 +1,5 @@
+2025-09-01T10:00:00Z [INFO] start worker id=2
+2025-09-01T10:00:03Z [ERROR] database unavailable
+2025-09-01T10:00:04Z [INFO] retry succeeded
+user=alice action=buy status=ok
+payment_id=777 failed reason=insufficient_funds
